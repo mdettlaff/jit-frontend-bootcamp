@@ -1,0 +1,17 @@
+import React from "react"
+
+export default function RecipeCard() {
+  return (
+      <div className="col s12 m4">
+        <div className="card medium yellow lighten-5">
+          <div className="card-image">
+            <img src="http://www.seriouseats.com/recipes/images/2017/06/20170617-bulgogi-burger-matt-clifton-1.jpg" />
+            <span className="card-title">King Burger</span>
+          </div>
+          <div className="card-content">
+            <p>Here are the instructions to make the perfect burger! Although it may not be the healthiest, use medium ground beef for moistness & flavour.</p>
+          </div>
+        </div>
+      </div>
+  )
+}
