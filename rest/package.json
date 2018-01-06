@@ -1,0 +1,13 @@
+{
+  "name": "jit-frontend-bootcamp-api",
+  "devDependencies": {
+    "nodemon": "^1.14.8"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.0-rc2"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  }
+}
