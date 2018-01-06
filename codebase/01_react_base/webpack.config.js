@@ -5,7 +5,7 @@ const SRC_PATH = path.resolve(__dirname, "./src")
 const DIST_PATH = path.resolve(__dirname, "./dist")
 
 module.exports = {
-  entry: path.join(SRC_PATH, "index.jsx"),
+  entry: path.join(SRC_PATH, "index.js"),
   /* Destination of "packed" JS bundle */
   output: {
     path: DIST_PATH,
