@@ -2,7 +2,7 @@ import React from "react"
 
 export default function RecipeCard() {
   return (
-      <div className="col s12 m4">
+      <div className="col m12 l4">
         <div className="card medium yellow lighten-5">
           <div className="card-image">
             <img src="http://www.seriouseats.com/recipes/images/2017/06/20170617-bulgogi-burger-matt-clifton-1.jpg" />
