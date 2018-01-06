@@ -1,7 +1,11 @@
 body {
   background-color: #fff59d;
+}
+
+.main-layout {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 nav {
