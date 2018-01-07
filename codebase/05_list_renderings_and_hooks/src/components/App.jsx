@@ -24,7 +24,7 @@ export default class App extends React.Component {
   render() {
     const { activeTabId } = this.state
 
-    /* Not possible in react 16>""
+    /* Not possible in react 16> */
     return [
       <Navbar handleTabChange={this.setActiveTabId}
         activeTabId={activeTabId}
