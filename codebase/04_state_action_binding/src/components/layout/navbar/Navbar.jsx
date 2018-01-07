@@ -1,4 +1,5 @@
 import React from "react"
+import PropTypes from "prop-types"
 
 import NavbarEntry from "./NavbarEntry"
 
@@ -6,22 +7,16 @@ export default class Navbar extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      activeTab: "Recipes",
-    }
-
     this.setActiveTab = this.setActiveTab.bind(this)
   }
 
   setActiveTab(newActiveTab) {
-    console.log("Setting active tab to:", newActiveTab)
-    this.setState({
-      activeTab: newActiveTab,
-    })
+    console.log("NAVBAR: Setting activeTabId to:", newActiveTab)
+    this.props.handleTabChange(newActiveTab)
   }
 
   render() {
-    const { activeTab } = this.state
+    const { activeTabId } = this.props
 
     return (
       <nav>
@@ -31,14 +26,19 @@ export default class Navbar extends React.Component {
             <ul id="nav-mobile" className="right hide-on-med-and-down">
               <NavbarEntry onTabChange={this.setActiveTab}
                 name="Recipes"
-                active={activeTab === "Recipes"} />
+                active={activeTabId === "Recipes"} />
               <NavbarEntry onTabChange={this.setActiveTab}
                 name="Shopping list"
-                active={activeTab === "Shopping list"} />
+                active={activeTabId === "Shopping list"} />
             </ul>
           </div>
         </div>
       </nav>
     )
   }
+}
+
+Navbar.propTypes = {
+  handleTabChange: PropTypes.func.isRequired,
+  activeTabId: PropTypes.string.isRequired,
 }
