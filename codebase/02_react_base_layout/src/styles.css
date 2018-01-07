@@ -36,3 +36,7 @@ fieldset > h4 {
   color: #e65100;
   font-weight: 800;
 }
+
+table.striped > tbody > tr:nth-child(2n+1) > td {
+   background-color: #fff8e1;
+}
