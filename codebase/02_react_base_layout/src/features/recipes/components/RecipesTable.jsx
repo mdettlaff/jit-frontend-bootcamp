@@ -6,7 +6,7 @@ export default function RecipesTable() {
   return (
     <fieldset className="row z-depth-1 yellow lighten-4">
       <h4>Recipes list</h4>
-      <table class="striped">
+      <table className="striped">
         <thead>
           <tr>
             <th>Meal name</th>
