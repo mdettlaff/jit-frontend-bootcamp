@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Footer() {
+export default Footer = (props) => {
   return (
     <footer className="page-footer orange darken-2">
       <div className="footer-copyright orange darken-3">

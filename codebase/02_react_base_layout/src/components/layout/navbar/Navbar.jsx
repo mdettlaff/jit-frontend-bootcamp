@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function Navbar() {
+export default Navbar = (props) => {
   return (
     <nav>
       <div className="nav-wrapper orange darken-1 z-depth-4">

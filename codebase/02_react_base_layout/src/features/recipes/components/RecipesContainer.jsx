@@ -3,7 +3,7 @@ import React from "react"
 import RandomRecipesList from "./RandomRecipesList"
 import RecipesTable from "./RecipesTable"
 
-export default function RecipesContainer() {
+export default RecipesContainer = (props) => {
   return (
     <div className="wrapper">
       <RandomRecipesList />
