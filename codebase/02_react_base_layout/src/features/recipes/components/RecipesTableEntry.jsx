@@ -1,6 +1,6 @@
 import React from "react"
 
-export default RecipesTableEntry = (props) => {
+export default function RecipesTableEntry() {
   return (
     <tr>
       <td>

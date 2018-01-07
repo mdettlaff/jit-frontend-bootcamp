@@ -1,6 +1,6 @@
 import React from "react"
 
-export default RecipeCard = (props) => {
+export default function RecipeCard() {
   return (
       <div className="col m12 l4">
         <div className="card medium yellow lighten-5">

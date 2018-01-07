@@ -2,7 +2,7 @@ import React from "react"
 
 import RecipesTableEntry from "./RecipesTableEntry"
 
-export default RecipesTable = (props) => {
+export default function RecipesTable() {
   return (
     <fieldset className="row z-depth-1 yellow lighten-4">
       <h4>Recipes list</h4>

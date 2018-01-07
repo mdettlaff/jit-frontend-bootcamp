@@ -49,7 +49,7 @@ const recipesList = [
   },
 ]
 
-const getNRandom = (n) => {
+function getNRandom(n) {
   return recipesList.sort(() => 0.5 - Math.random()).slice(0, n)
 }
 

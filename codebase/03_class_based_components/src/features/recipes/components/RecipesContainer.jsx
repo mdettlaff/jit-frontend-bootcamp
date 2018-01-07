@@ -4,7 +4,7 @@ import RandomRecipesList from "./RandomRecipesList"
 import RecipesTable from "./RecipesTable"
 import * as DataSource from "../RecipesStore"
 
-export default RecipesContainer = (props) => {
+export default function RecipesContainer() {
   return (
     <div className="wrapper">
       <RandomRecipesList randomRecipes={DataSource.getNRandom(3)}/>
