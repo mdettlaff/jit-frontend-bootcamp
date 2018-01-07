@@ -11,9 +11,15 @@ export default class RandomRecipesList extends React.Component {
       <fieldset className="row z-depth-1 yellow lighten-4">
         <h4>Random recipes</h4>
         <div className="row">
-          <RecipeCard mealName={recipes[0].name} imageUrl={recipes[0].imageUrl} description={recipes[0].description} />
-          <RecipeCard mealName={recipes[1].name} imageUrl={recipes[1].imageUrl} description={recipes[1].description} />
-          <RecipeCard mealName={recipes[2].name} imageUrl={recipes[2].imageUrl} description={recipes[2].description} />
+          {
+            recipes.map((recipe) => {
+              return <RecipeCard mealName={recipe.name}
+                imageUrl={recipe.imageUrl}
+                description={recipe.description}
+                key={recipe.id}
+              />
+            })
+          }
         </div>
       </fieldset>
     )
