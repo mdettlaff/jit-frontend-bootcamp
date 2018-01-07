@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function RecipesTableEntry() {
+const RecipesTableEntry = (props) => {
   return (
     <tr>
       <td>
@@ -17,3 +17,5 @@ export default function RecipesTableEntry() {
     </tr>
   )
 }
+
+export default RecipesTableEntry

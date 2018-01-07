@@ -2,10 +2,12 @@ import React from "react"
 
 import RecipesContainer from "features/recipes/components/RecipesContainer"
 
-export default function Content() {
+const Content = (props) => {
   return (
     <div className="container content">
       <RecipesContainer />
     </div>
   )
 }
+
+export default Content

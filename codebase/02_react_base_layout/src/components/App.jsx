@@ -4,7 +4,7 @@ import Content from "./layout/Content"
 import Footer from "./layout/Footer"
 import Navbar from "./layout/navbar/Navbar"
 
-export default function App() {
+const App = (props) => {
   return (
     <div className="main-layout wrapper">
       <Navbar />
@@ -13,3 +13,5 @@ export default function App() {
     </div>
   )
 }
+
+export default App
