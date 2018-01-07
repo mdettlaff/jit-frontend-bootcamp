@@ -1,9 +1,10 @@
 import React from "react"
+import { connect } from "react-redux"
 import PropTypes from "prop-types"
 
-import RecipesContainer from "features/recipes/components/RecipesContainer"
+import RecipesContainer from "../recipes/RecipesContainer"
 
-export default class Content extends React.PureComponent {
+class Content extends React.PureComponent {
   getContentForTab(activeTabId) {
     switch (activeTabId) {
       default:
@@ -27,6 +28,14 @@ export default class Content extends React.PureComponent {
   }
 }
 
+const mapStateToProps = (store) => {
+  return {
+    activeTabId: store.viewState.activeTabId,
+  }
+}
+
 Content.propTypes = {
   activeTabId: PropTypes.string.isRequired,
 }
+
+export default connect(mapStateToProps)(Content)
