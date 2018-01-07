@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import RecipesContainer from "features/recipes/components/RecipesContainer"
+import RecipesContainer from "../recipes/RecipesContainer"
 
 export default class Content extends React.PureComponent {
   getContentForTab(activeTabId) {

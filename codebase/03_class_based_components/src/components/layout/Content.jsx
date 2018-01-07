@@ -1,6 +1,6 @@
 import React from "react"
 
-import RecipesContainer from "features/recipes/components/RecipesContainer"
+import RecipesContainer from "../recipes/RecipesContainer"
 
 const Content = (props) => {
   return (
