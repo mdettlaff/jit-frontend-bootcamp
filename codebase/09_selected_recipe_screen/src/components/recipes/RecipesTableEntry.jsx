@@ -11,14 +11,14 @@ export default class RecipesTableEntry extends React.PureComponent {
         <td>
           <a href="#" onClick={onRecipeSelected}>
             {mealName}
-        </a>
+          </a>
         </td>
         <td>
           {preparationTime}min
-      </td>
+        </td>
         <td>
           {difficulty}
-      </td>
+        </td>
       </tr>
     )
   }
