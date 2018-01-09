@@ -23,6 +23,7 @@ class SingleRecipe extends React.PureComponent {
             <p><strong>Difficulty level:</strong> {recipe.difficulty}</p>
           </div>
           <div className="col m7 s12">
+            <p>{recipe.description}</p>
             <p><strong>Ingredients list:</strong></p>
             <fieldset className="z-depth-1 yellow lighten-5">
               <ul>
