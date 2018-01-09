@@ -51,9 +51,25 @@ const mockedRecipes = [
   },
 ]
 
+const mockedIngredients = {
+  "1": [{ name: "Beef", amount: "200g" }, { name: "Buns", amount: "2" }],
+  "2": [{ name: "Pasta", amount: "100g" }, { name: "Tomatoes", amount: "6" },
+  { name: "Chicken breast", amount: "250g" }],
+  "3": [{ name: "Filo pastry", amount: "100g" }, { name: "Butter", amount: "50g" },
+  { name: "Honey", amount: "2 tbsp" }, { name: "Pistachios", amount: "120g" }],
+  "4": [{ name: "Apples", amount: "0.5kg" }, { name: "Flour", amount: "250g" },
+  { name: "Eggs", amount: "1" }],
+  "5": [{ name: "Flour", amount: "200g" }, { name: "Chocolate", amount: "75g" },
+  { name: "Eggs", amount: "2" }, { name: "Milk", amount: "0.5l" },
+  { name: "Sugar", amount: "2 tbsp" }],
+  "6": [{ name: "Carrots", amount: "200g" }, { name: "Chicken broth", amount: "500ml" },
+  { name: "Cream", amount: "1 tsp" }],
+}
+
 const initialState = {
   recipesList: [],
   selectedRecipeId: undefined,
+  selectedIngredients: [],
 }
 
 const reducer = (state = initialState, action) => {
@@ -61,8 +77,9 @@ const reducer = (state = initialState, action) => {
     case Recipes.FETCH_RECIPES_LIST:
       return { ...state, recipesList: mockedRecipes.slice() }
     case Recipes.SELECT_RECIPE_ID:
-      console.log("Recipe selected: ", action.recipeId) // Just to prove that all works
       return { ...state, selectedRecipeId: action.recipeId }
+    case Recipes.GET_INGREDIENTS:
+      return { ...state, selectedIngredients: mockedIngredients[action.recipeId].slice() }
   }
 
   return state
