@@ -13,7 +13,15 @@ const selectRecipeId = (recipeId) => {
   }
 }
 
+const getIngredients = (recipeId) => {
+  return {
+    type: Recipes.GET_INGREDIENTS,
+    recipeId
+  }
+}
+
 export {
   fetchRecipesList,
   selectRecipeId,
+  getIngredients,
 }
