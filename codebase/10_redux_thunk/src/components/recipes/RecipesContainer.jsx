@@ -54,7 +54,7 @@ const mapStateToProps = (store) => {
   return {
     recipesList: store.recipesState.recipesList,
     selectedRecipeId: store.recipesState.selectedRecipeId,
-    requestInProgress: store.recipesState.requestInProgress,
+    requestInProgress: store.recipesState.recipesRequestInProgress,
   }
 }
 
