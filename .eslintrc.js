@@ -32,8 +32,6 @@ module.exports = {
         "no-unused-vars": [
             0
         ],
-        "no-console": [
-          "warn"
-        ],
+	"no-console": 0,
     }
 };

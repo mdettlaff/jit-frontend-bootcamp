@@ -6,7 +6,8 @@ import { bindActionCreators } from "redux"
 import RandomRecipesList from "./RandomRecipesList"
 import RecipesTable from "./RecipesTable"
 import SingleRecipe from "./SingleRecipe"
-import { fetchRecipesList, selectRecipeId } from "services/recipes/actions"
+import Preloader from "components/common/Preloader"
+import { fetchRecipesListAsync, selectRecipeId } from "services/recipes/actions"
 
 const getNRandom = (data, n) => {
   if (!data) {
@@ -18,9 +19,11 @@ const getNRandom = (data, n) => {
 
 class RecipesContainer extends React.PureComponent {
   getInternals() {
-    const { recipesList, selectedRecipeId } = this.props
+    const { recipesList, selectedRecipeId, requestInProgress } = this.props
 
-    if (selectedRecipeId !== undefined) {
+    if (requestInProgress) {
+      return <Preloader />
+    } else if (selectedRecipeId !== undefined) {
       const recipe = recipesList.find((recipe) => recipe.id === selectedRecipeId)
 
       if (recipe) {
@@ -51,12 +54,13 @@ const mapStateToProps = (store) => {
   return {
     recipesList: store.recipesState.recipesList,
     selectedRecipeId: store.recipesState.selectedRecipeId,
+    requestInProgress: store.recipesState.requestInProgress,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators({
-    fetchRecipesList: fetchRecipesList,
+    fetchRecipesList: fetchRecipesListAsync,
     selectRecipeId: selectRecipeId,
   }, dispatch)
 }
@@ -66,6 +70,7 @@ RecipesContainer.propTypes = {
   fetchRecipesList: PropTypes.func.isRequired,
   selectRecipeId: PropTypes.func.isRequired,
   selectedRecipeId: PropTypes.number,
+  requestInProgress: PropTypes.bool.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipesContainer)
