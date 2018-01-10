@@ -69,7 +69,7 @@ RecipesContainer.propTypes = {
   recipesList: PropTypes.array.isRequired,
   fetchRecipesList: PropTypes.func.isRequired,
   selectRecipeId: PropTypes.func.isRequired,
-  selectedRecipeId: PropTypes.number,
+  selectedRecipeId: PropTypes.string,
   requestInProgress: PropTypes.bool.isRequired,
 }
 
