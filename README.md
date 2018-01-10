@@ -11,6 +11,7 @@
   - [07 - Redux store](#07-redux-store)
   - [08 - Recipes store](#08-recipes-store)
   - [09 - "Selected Recipe" screen](#09-selected-recipe-screen)
+  - [10 - Fetching the data from external API](#10-fetching-the-data-from-external-api)
 
 
 ## Codebases
@@ -34,3 +35,5 @@ This section presents the general idea of Redux state management. The store cont
 In this chapter we are extending the model of the application state to make it aware of all recipes-related data.
 ### 09 - "Selected Recipe" screen
 Based on the knowledge gathered before we are building the "Selected Recipe" scene and couple it with the data describing application state.
+### 10 - Fetching the data from external API
+[Redux Thunk](https://github.com/gaearon/redux-thunk) middleware has been utilized to execute asynchronous state modifications. All mocked data has been replaced with external API calls.
