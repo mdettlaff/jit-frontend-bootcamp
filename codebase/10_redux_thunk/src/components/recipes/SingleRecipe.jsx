@@ -3,7 +3,9 @@ import React from "react"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 
-import { getIngredients } from "services/recipes/actions"
+import Preloader from "components/common/Preloader"
+import { getIngredientsForRecipeAsync } from "services/recipes/actions"
+import { recipesApi } from "api/recipes"
 
 class SingleRecipe extends React.PureComponent {
   componentDidMount() {
@@ -11,7 +13,8 @@ class SingleRecipe extends React.PureComponent {
   }
 
   render() {
-    const { recipe, onBackButtonClick } = this.props
+    const { recipe, onBackButtonClick, requestInProgress,
+      ingredientsList } = this.props
 
     return (
       <fieldset className="row z-depth-1 yellow lighten-4">
@@ -27,9 +30,12 @@ class SingleRecipe extends React.PureComponent {
             <p><strong>Ingredients list:</strong></p>
             <fieldset className="z-depth-1 yellow lighten-5">
               <ul>
-                {this.props.ingredientsList.map((ing) =>
-                  <li><p>{ing.amount} <strong>{ing.name}</strong></p></li>
-                )}
+                {requestInProgress
+                  ? <Preloader />
+                  : this.props.ingredientsList.map((ing) =>
+                    <li key={ing.name}><p>{ing.amount} <strong>{ing.name}</strong></p></li>
+                  )
+                }
               </ul>
             </fieldset>
           </div>
@@ -42,11 +48,12 @@ class SingleRecipe extends React.PureComponent {
 const mapStateToProps = (store) => {
   return {
     ingredientsList: store.recipesState.selectedIngredients,
+    requestInProgress: store.recipesState.ingredientsRequestInProgress,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ getIngredients: getIngredients }, dispatch)
+  return bindActionCreators({ getIngredients: getIngredientsForRecipeAsync }, dispatch)
 }
 
 SingleRecipe.propTypes = {
@@ -54,6 +61,7 @@ SingleRecipe.propTypes = {
   onBackButtonClick: PropTypes.func.isRequired,
   ingredientsList: PropTypes.array.isRequired,
   getIngredients: PropTypes.func.isRequired,
+  requestInProgress: PropTypes.bool.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleRecipe)

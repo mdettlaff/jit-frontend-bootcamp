@@ -1,4 +1,5 @@
 import { Recipes } from "../actionTypes"
+import { recipesApi } from "api/recipes"
 
 const fetchRecipesList = () => {
   return {
@@ -6,22 +7,71 @@ const fetchRecipesList = () => {
   }
 }
 
-const selectRecipeId = (recipeId) => {
+const fetchRecipesListSuccess = (recipes) => {
   return {
-    type: Recipes.SELECT_RECIPE_ID,
-    recipeId
+    type: Recipes.FETCH_RECIPES_LIST_SUCCESS,
+    recipes,
   }
 }
 
-const getIngredients = (recipeId) => {
+const fetchRecipesListError = (error) => {
+  return {
+    type: Recipes.FETCH_RECIPES_LIST_ERROR,
+    error,
+  }
+}
+
+const selectRecipeId = (recipeId) => {
+  return {
+    type: Recipes.SELECT_RECIPE_ID,
+    recipeId,
+  }
+}
+
+const getIngredients = () => {
   return {
     type: Recipes.GET_INGREDIENTS,
-    recipeId
+  }
+}
+
+const getIngredientsForRecipeSuccess = (ingredients) => {
+  return {
+    type: Recipes.GET_INGREDIENTS_SUCCESS,
+    ingredients,
+  }
+}
+
+const getIngredientsForRecipeError = (error) => {
+  return {
+    type: Recipes.GET_INGREDIENTS_ERROR,
+    error,
+  }
+}
+
+const fetchRecipesListAsync = () => {
+  return (dispatch) => {
+    dispatch(fetchRecipesList())
+
+    return recipesApi.fetchAllRecipes().then(
+      (data) => dispatch(fetchRecipesListSuccess(data)),
+      (error) => dispatch(fetchRecipesListError(error))
+    )
+  }
+}
+
+const getIngredientsForRecipeAsync = (recipeId) => {
+  return (dispatch) => {
+    dispatch(getIngredients())
+
+    return recipesApi.getIngredientsForRecipe(recipeId).then(
+      (data) => dispatch(getIngredientsForRecipeSuccess(data.ingredients)),
+      (error) => dispatch(getIngredientsForRecipeError(error))
+    )
   }
 }
 
 export {
-  fetchRecipesList,
+  fetchRecipesListAsync,
   selectRecipeId,
-  getIngredients,
+  getIngredientsForRecipeAsync,
 }

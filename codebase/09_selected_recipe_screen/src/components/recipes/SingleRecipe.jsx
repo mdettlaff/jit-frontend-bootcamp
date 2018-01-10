@@ -28,7 +28,7 @@ class SingleRecipe extends React.PureComponent {
             <fieldset className="z-depth-1 yellow lighten-5">
               <ul>
                 {this.props.ingredientsList.map((ing) =>
-                  <li><p>{ing.amount} <strong>{ing.name}</strong></p></li>
+                  <li key={ing.name}><p>{ing.amount} <strong>{ing.name}</strong></p></li>
                 )}
               </ul>
             </fieldset>
