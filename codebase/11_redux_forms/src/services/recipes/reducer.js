@@ -7,6 +7,8 @@ const initialState = {
   requestError: undefined,
   selectedRecipeId: undefined,
   selectedIngredients: [],
+  recipeUpdateInProgress: false,
+  updateError: undefined
 }
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +27,12 @@ const reducer = (state = initialState, action) => {
       return { ...state, ingredientsRequestInProgress: false, selectedIngredients: action.ingredients }
     case Recipes.GET_INGREDIENTS_ERROR:
       return { ...state, ingredientsRequestInProgress: false, requestError: action.error }
+    case Recipes.SUBMIT_UPDATE:
+      return { ...state, recipeUpdateInProgress: true, updateError: undefined }
+    case Recipes.SUBMIT_UPDATE_SUCCESS:
+      return { ...state, recipeUpdateInProgress: false }
+    case Recipes.SUBMIT_UPDATE_ERROR:
+      return { ...state, recipeUpdateInProgress: false, updateError: action.error }
   }
 
   return state

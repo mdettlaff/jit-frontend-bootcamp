@@ -70,8 +70,39 @@ const getIngredientsForRecipeAsync = (recipeId) => {
   }
 }
 
+const submitUpdate = () => {
+  return {
+    type: Recipes.SUBMIT_UPDATE,
+  }
+}
+
+const submitUpdateForRecipeSuccess = () => {
+  return {
+    type: Recipes.SUBMIT_UPDATE_SUCCESS,
+  }
+}
+
+const submitUpdateForRecipeError = (error) => {
+  return {
+    type: Recipes.SUBMIT_UPDATE_ERROR,
+    error,
+  }
+}
+
+const submitUpdateForRecipeAsync = (recipeId, updatedData) => {
+  return (dispatch) => {
+    dispatch(submitUpdate())
+
+    return recipesApi.submitUpdateForRecipe(recipeId, updatedData).then(
+      (data) => dispatch(submitUpdateForRecipeSuccess()), // NOTE: State should be updated after this step as well
+      (error) => dispatch(submitUpdateForRecipeError(error))
+    )
+  }
+}
+
 export {
   fetchRecipesListAsync,
   selectRecipeId,
   getIngredientsForRecipeAsync,
+  submitUpdateForRecipeAsync,
 }
