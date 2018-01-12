@@ -1,17 +1,18 @@
 # JIT Frontend Bootcamp - January 2018
 
 - [Codebases](#codebases)
-  - [00 - Base](#00-base)
-  - [01 - React base](#01-react-base)
-  - [02 - React base layout](#02-react-base-layout)
-  - [03 - React class-based components](#03-react-class-based-components)
-  - [04 - Component state and action binding](#04-component-state-and-action-binding)
-  - [05 - List renderings and lifecycle hooks](#05-list-renderings-and-lifecycle-hooks)
-  - [06 - `React.PureComponent`](#06-reactpurecomponent)
-  - [07 - Redux store](#07-redux-store)
-  - [08 - Recipes store](#08-recipes-store)
-  - [09 - "Selected Recipe" screen](#09-selected-recipe-screen)
-  - [10 - Fetching the data from external API](#10-fetching-the-data-from-external-api)
+  - [00 - Base](#00---base)
+  - [01 - React base](#01---react-base)
+  - [02 - React base layout](#02---react-base-layout)
+  - [03 - React class-based components](#03---react-class-based-components)
+  - [04 - Component state and action binding](#04---component-state-and-action-binding)
+  - [05 - List renderings and lifecycle hooks](#05---list-renderings-and-lifecycle-hooks)
+  - [06 - `React.PureComponent`](#06---reactpurecomponent)
+  - [07 - Redux store](#07---redux-store)
+  - [08 - Recipes store](#08---recipes-store)
+  - [09 - "Selected Recipe" screen](#09---selected-recipe-screen)
+  - [10 - Fetching the data from external API](#10---fetching-the-data-from-external-api)
+  - [11 - Redux form](#11---redux-form)
 
 
 ## Codebases
@@ -37,3 +38,5 @@ In this chapter we are extending the model of the application state to make it a
 Based on the knowledge gathered before we are building the "Selected Recipe" scene and couple it with the data describing application state.
 ### 10 - Fetching the data from external API
 [Redux Thunk](https://github.com/gaearon/redux-thunk) middleware has been utilized to execute asynchronous state modifications. All mocked data has been replaced with external API calls.
+### 11 - Redux form
+[Redux Form](https://redux-form.com/7.2.0/) library has been registered as a dependency and used for handling user inputs while editing the data. Updated data is then being sent to a server via HTTP PUT method.

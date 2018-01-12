@@ -3,8 +3,9 @@ import React from "react"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"
 
+import RecipeDetailsForm from "./RecipeDetailsForm"
 import Preloader from "components/common/Preloader"
-import { getIngredientsForRecipeAsync } from "services/recipes/actions"
+import { getIngredientsForRecipeAsync, submitUpdateForRecipeAsync } from "services/recipes/actions"
 import { recipesApi } from "api/recipes"
 
 class SingleRecipe extends React.PureComponent {
@@ -13,8 +14,7 @@ class SingleRecipe extends React.PureComponent {
   }
 
   render() {
-    const { recipe, onBackButtonClick, requestInProgress,
-      ingredientsList } = this.props
+    const { recipe, onBackButtonClick, requestInProgress } = this.props
 
     return (
       <fieldset className="row z-depth-1 yellow lighten-4">
@@ -22,8 +22,11 @@ class SingleRecipe extends React.PureComponent {
         <div className="row">
           <div className="col m5 s12">
             <img src={recipe.imageUrl} alt={recipe.name} className="responsive-img" />
-            <p><strong>Preparation time:</strong> {recipe.preparationTime}</p>
-            <p><strong>Difficulty level:</strong> {recipe.difficulty}</p>
+            <RecipeDetailsForm initialValues={{
+              preparationTime: recipe.preparationTime,
+              difficulty: recipe.difficulty
+            }}
+            onSubmit={(data) => this.props.onSubmitClick(recipe.id, data)}/>
           </div>
           <div className="col m7 s12">
             <p>{recipe.description}</p>
@@ -53,7 +56,10 @@ const mapStateToProps = (store) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ getIngredients: getIngredientsForRecipeAsync }, dispatch)
+  return bindActionCreators({
+    getIngredients: getIngredientsForRecipeAsync,
+    onSubmitClick: submitUpdateForRecipeAsync,
+  }, dispatch)
 }
 
 SingleRecipe.propTypes = {
@@ -62,6 +68,7 @@ SingleRecipe.propTypes = {
   ingredientsList: PropTypes.array.isRequired,
   getIngredients: PropTypes.func.isRequired,
   requestInProgress: PropTypes.bool.isRequired,
+  onSubmitClick: PropTypes.func.isRequired,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SingleRecipe)

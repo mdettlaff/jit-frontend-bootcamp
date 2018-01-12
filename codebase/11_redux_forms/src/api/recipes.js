@@ -11,4 +11,13 @@ export const recipesApi = {
   getIngredientsForRecipe: (id) => {
     return fetch([API_BASE, INGREDIENTS_ENDPOINT, id].join("/")).then((response) => response.json())
   },
+  submitUpdateForRecipe: (id, data) => {
+    return fetch([API_BASE, RECIPES_ENDPOINT, id].join("/"), {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "put",
+      body: JSON.stringify(data),
+    }).then((response) => response.json())
+  }
 }

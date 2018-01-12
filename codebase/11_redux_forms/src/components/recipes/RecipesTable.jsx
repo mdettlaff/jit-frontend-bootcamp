@@ -23,7 +23,7 @@ export default class RecipesTable extends React.PureComponent {
             {
               recipesList.map((recipe) => {
                 return <RecipesTableEntry mealName={recipe.name}
-                  preparationTime={recipe.preparationTime}
+                  preparationTime={Number(recipe.preparationTime)}
                   difficulty={recipe.difficulty}
                   key={recipe.id}
                   onRecipeSelected={() => onRecipeSelected(recipe.id)}
