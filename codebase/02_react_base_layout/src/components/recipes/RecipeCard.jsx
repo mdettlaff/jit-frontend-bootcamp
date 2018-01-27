@@ -18,11 +18,4 @@ class RecipeCard extends React.Component {
   }
 }
 
-/*
-const RecipeCard = (props) => {
-  return (
-  )
-}
-*/
-
 export default RecipeCard
