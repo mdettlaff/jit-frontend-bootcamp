@@ -1,4 +1,4 @@
-import React from "react"
+import * as React from "react"
 
 import Content from "./layout/Content"
 import Footer from "./layout/Footer"
