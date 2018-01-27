@@ -36,6 +36,6 @@ module.exports = {
   },
   /* Enable importing files without specifying the extensions */
   resolve: {
-    extensions: [".js"],
+    extensions: [".js", ".jsx"],
   },
 }
