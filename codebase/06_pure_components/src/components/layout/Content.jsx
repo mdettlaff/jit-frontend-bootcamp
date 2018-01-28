@@ -10,8 +10,9 @@ export default class Content extends React.PureComponent {
     super(props)
 
     this.state = {
-      contentStyle: {backgroundColor: "#fff59d"}
+      contentStyle: {backgroundColor: null}
     }
+    this.setBackgroundColor = this.setBackgroundColor.bind(this)
   }
 
   setBackgroundColor(color) {
@@ -27,16 +28,17 @@ export default class Content extends React.PureComponent {
         return <RecipesContainer />
       }
       case "Color picker": {
-        return <ColorPicker />
+        return <ColorPicker myListener={this.setBackgroundColor} />
       }
     }
   }
 
   render() {
     const { activeTabId } = this.props
+    const bgColor = this.state.backgroundColor
 
     return (
-      <div className="container content" style={ {backgroundColor: "blue"} }>
+      <div className="container content" style={ {backgroundColor: bgColor} }>
         {this.getContentForTab(activeTabId)}
       </div>
     )
