@@ -30,11 +30,12 @@ export default class App extends React.PureComponent {
       //const newMessages = [Helper.createMessage("pitr", "am sendink"), Helper.createMessage("pablo", "plata o plomo")]
       const newMessages = response.data
       console.log('found new messages: ' + newMessages)
-      this.setState({ messages: this.state.messages.concat(newMessages), timestamp: Date.now() })
+      const updatedTimestamp = this.state.messages.length === 0 ? 0 : this.state.messages[this.state.messages.length - 1].timestamp
+      this.setState({ messages: this.state.messages.concat(newMessages), timestamp: updatedTimestamp })
     }
     responseHandler = responseHandler.bind(this)
     setInterval(() => {
-      console.log('checking for new messages')
+      console.log('checking for new messages after timestamp: ' + this.state.timestamp)
       var axiosInstance = axios.create({
         baseURL: 'http://jitchatapp.azurewebsites.net/',
         timeout: 2000
