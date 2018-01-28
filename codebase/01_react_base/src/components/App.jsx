@@ -12,10 +12,20 @@ export default class App extends React.PureComponent {
       messages: [{ "name": "misza", "message": "wot wot wot" }, { "name": "wolodya", "message": "trabaho" }],
       messageToSend: "foo"
     }
+
+    setInterval(() => {
+      console.log('checking for new messages')
+      //const newMessages = [{ "name": "pitr", "message": "am sendink" }, { "name": "pablo", "message": "plata o plomo" }]
+      const newMessages = []
+      console.log('found new messages: ' + newMessages)
+      this.setState({messages: this.state.messages.concat(newMessages)})
+    }, 2000)
   }
 
   sendMessage() {
     console.log('sending message: ' + this.state.messageToSend)
+    const messageObjectToSend = {name: "Michał Dettlaff", message: this.state.messageToSend}
+    this.setState({messages: this.state.messages.concat([messageObjectToSend])})
   }
 
   onInputChange(event) {
@@ -29,8 +39,8 @@ export default class App extends React.PureComponent {
         <h1>Dżit Czat</h1>
         <ul>
           {
-            this.state.messages.map((message) => {
-              return <li key={message.message}>{message.name}: {message.message}</li>
+            this.state.messages.map((message, index) => {
+              return <li key={index}>{message.name}: {message.message}</li>
             })
           }
         </ul>
