@@ -20,8 +20,8 @@ export default class App extends React.PureComponent {
     this.onInputChange = this.onInputChange.bind(this)
 
     this.state = {
-      messages: [Helper.createMessage("misza", "wot wot wot"), Helper.createMessage("wolodya", "trabaho")],
-      messageToSend: "foo",
+      messages: [],
+      messageToSend: "foobar",
       timestamp: 0
     }
 
@@ -52,7 +52,20 @@ export default class App extends React.PureComponent {
   sendMessage() {
     console.log('sending message: ' + this.state.messageToSend)
     const messageObjectToSend = Helper.createMessage("Michał Dettlaff", this.state.messageToSend)
-    this.setState({ messages: this.state.messages.concat([messageObjectToSend]) })
+
+    let responseHandler = function (response) {
+      this.setState({ messageToSend: "" })
+    }
+    responseHandler = responseHandler.bind(this)
+    var axiosInstance = axios.create({
+      baseURL: 'http://jitchatapp.azurewebsites.net/',
+      timeout: 2000
+    });
+    axiosInstance.post('/', messageObjectToSend)
+      .then(responseHandler)
+      .catch(function (error) {
+        console.log("axios error: " + error)
+      });
   }
 
   onInputChange(event) {
