@@ -1,4 +1,5 @@
 import React from "react"
+import axios from 'axios'
 
 class Helper {
   static createMessage(name, message) {
@@ -20,15 +21,31 @@ export default class App extends React.PureComponent {
 
     this.state = {
       messages: [Helper.createMessage("misza", "wot wot wot"), Helper.createMessage("wolodya", "trabaho")],
-      messageToSend: "foo"
+      messageToSend: "foo",
+      timestamp: 0
     }
 
+    let responseHandler = function (response) {
+      console.log("axios GET response: " + response)
+      //const newMessages = [Helper.createMessage("pitr", "am sendink"), Helper.createMessage("pablo", "plata o plomo")]
+      const newMessages = response.data
+      console.log('found new messages: ' + newMessages)
+      this.setState({ messages: this.state.messages.concat(newMessages), timestamp: Date.now() })
+    }
+    responseHandler = responseHandler.bind(this)
     setInterval(() => {
       console.log('checking for new messages')
-      //const newMessages = [Helper.createMessage("pitr", "am sendink"), Helper.createMessage("pablo", "plata o plomo")]
-      const newMessages = []
-      console.log('found new messages: ' + newMessages)
-      this.setState({ messages: this.state.messages.concat(newMessages) })
+      var axiosInstance = axios.create({
+        baseURL: 'http://jitchatapp.azurewebsites.net/',
+        timeout: 2000
+      });
+      axiosInstance.get('/', {
+        params: { timestamp: this.state.timestamp }
+      })
+        .then(responseHandler)
+        .catch(function (error) {
+          console.log("axios error: " + error)
+        });
     }, 2000)
   }
 
