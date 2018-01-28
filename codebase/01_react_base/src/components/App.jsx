@@ -1,5 +1,15 @@
 import React from "react"
 
+class Helper {
+  static createMessage(name, message) {
+    return { name: name, message: message, timestamp: Date.now() }
+  }
+
+  static formatTime(timestamp) {
+    return new Date(timestamp).toISOString()
+  }
+}
+
 export default class App extends React.PureComponent {
 
   constructor(props) {
@@ -9,23 +19,23 @@ export default class App extends React.PureComponent {
     this.onInputChange = this.onInputChange.bind(this)
 
     this.state = {
-      messages: [{ "name": "misza", "message": "wot wot wot" }, { "name": "wolodya", "message": "trabaho" }],
+      messages: [Helper.createMessage("misza", "wot wot wot"), Helper.createMessage("wolodya", "trabaho")],
       messageToSend: "foo"
     }
 
     setInterval(() => {
       console.log('checking for new messages')
-      //const newMessages = [{ "name": "pitr", "message": "am sendink" }, { "name": "pablo", "message": "plata o plomo" }]
+      //const newMessages = [Helper.createMessage("pitr", "am sendink"), Helper.createMessage("pablo", "plata o plomo")]
       const newMessages = []
       console.log('found new messages: ' + newMessages)
-      this.setState({messages: this.state.messages.concat(newMessages)})
+      this.setState({ messages: this.state.messages.concat(newMessages) })
     }, 2000)
   }
 
   sendMessage() {
     console.log('sending message: ' + this.state.messageToSend)
-    const messageObjectToSend = {name: "Michał Dettlaff", message: this.state.messageToSend}
-    this.setState({messages: this.state.messages.concat([messageObjectToSend])})
+    const messageObjectToSend = Helper.createMessage("Michał Dettlaff", this.state.messageToSend)
+    this.setState({ messages: this.state.messages.concat([messageObjectToSend]) })
   }
 
   onInputChange(event) {
@@ -40,7 +50,7 @@ export default class App extends React.PureComponent {
         <ul>
           {
             this.state.messages.map((message, index) => {
-              return <li key={index}>{message.name}: {message.message}</li>
+              return <li key={index}>{Helper.formatTime(message.timestamp)} &lt;<b>{message.name}</b>&gt; {message.message}</li>
             })
           }
         </ul>
