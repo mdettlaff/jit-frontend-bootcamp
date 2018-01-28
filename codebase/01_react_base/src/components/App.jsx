@@ -30,8 +30,9 @@ export default class App extends React.PureComponent {
       //const newMessages = [Helper.createMessage("pitr", "am sendink"), Helper.createMessage("pablo", "plata o plomo")]
       const newMessages = response.data
       console.log('found new messages: ' + newMessages)
-      const updatedTimestamp = this.state.messages.length === 0 ? 0 : this.state.messages[this.state.messages.length - 1].timestamp
-      this.setState({ messages: this.state.messages.concat(newMessages), timestamp: updatedTimestamp })
+      const updatedMessages = this.state.messages.concat(newMessages)
+      const updatedTimestamp = updatedMessages.length === 0 ? 0 : updatedMessages[updatedMessages.length - 1].timestamp
+      this.setState({ messages: updatedMessages, timestamp: updatedTimestamp })
     }
     responseHandler = responseHandler.bind(this)
     setInterval(() => {
