@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 
 import RecipesContainer from "../recipes/RecipesContainer"
+import ColorPicker from "../colorpicker/ColorPicker"
 
 export default class Content extends React.PureComponent {
   getContentForTab(activeTabId) {
@@ -10,8 +11,8 @@ export default class Content extends React.PureComponent {
       case "Recipes": {
         return <RecipesContainer />
       }
-      case "Shopping list": {
-        return <h5>Shopping list will be here soon...</h5>
+      case "Color picker": {
+        return <ColorPicker />
       }
     }
   }
@@ -20,7 +21,7 @@ export default class Content extends React.PureComponent {
     const { activeTabId } = this.props
 
     return (
-      <div className="container content">
+      <div className="container content" style={ {backgroundColor: "red"} }>
         {this.getContentForTab(activeTabId)}
       </div>
     )

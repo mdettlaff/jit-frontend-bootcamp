@@ -27,8 +27,8 @@ export default class Navbar extends React.PureComponent {
                 name="Recipes"
                 active={activeTabId === "Recipes"} />
               <NavbarEntry onTabChange={this.setActiveTab}
-                name="Shopping list"
-                active={activeTabId === "Shopping list"} />
+                name="Color picker"
+                active={activeTabId === "Color picker"} />
             </ul>
           </div>
         </div>
