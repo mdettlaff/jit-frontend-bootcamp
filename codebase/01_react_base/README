@@ -1,0 +1,9 @@
+Aplikacja do chatu
+- przechować timestamp
+- dokleić otrzymane wiadomości do wewnętrznego stanu
+- periodycznie odpytywać serwer, aktualizując za każdym razem timestamp
+
+- biblioteka do requestów: "axios", "fetch-wg"
+- npmjs.com / search
+- setInterval, np. w component uimount
+

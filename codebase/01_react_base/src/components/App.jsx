@@ -2,7 +2,15 @@ import React from "react"
 
 const App = (props) => {
   return (
-    <h1>Hello from react!</h1>
+    <div>
+      <h1>Dżit Czat</h1>
+      <ul>
+        <li>DevTest: hello world</li>
+        <li>DevTest: hello world 2</li>
+      </ul>
+      <input type="text"></input>
+      <button>Send</button>
+    </div>
   )
 }
 
